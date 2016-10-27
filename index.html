@@ -23,16 +23,20 @@ function initMap(position){
 	  center: uluru
 	});
 	
-	var geocoder = new google.maps.Geocoder();
-
-        document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(geocoder, map);
-        });
 	
 	var marker = new google.maps.Marker({
 	  position: uluru,
 	  map: map
 	});
+	
+	
+	/*var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+    });*/
+	
+	
 	
 	var contentString="<ul>\
 	<li>Limit Lake Trout (Mackinaw) to 1&nbsp;<a href=\"http://www.doh.wa.gov/CommunityandEnvironment/Food/Fish/MealSize\" tabindex=\"0\" title=\"Fish meal size chart.\">meal</a> per week. </li>\
