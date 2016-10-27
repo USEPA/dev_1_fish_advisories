@@ -1,4 +1,4 @@
-# Resources for Fish Advisories Mobile App (Team 1)
+Fish Advisories Mobile App (Team 1)
 
 #### Generated during USEPA Developers Guild Team App Building Workshop, Oct 2016
 
@@ -28,6 +28,12 @@ A simple smartphone app that allows user to view advisories relative to her/his 
 - Define backend functionality: advisory producers (e.g., state departments of health) vary in data management/access
   - [WA](http://www.doh.wa.gov/CommunityandEnvironment/Food/Fish/Advisories#PugetSound)
   - [OR](https://public.health.oregon.gov/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx)
-  
-  
+- Requires partnering with state agencies
+- Translations: effort to make visually/functionally simple and clean, but identify key stakeholder groups to define target languages
+- Outreach and beta testing...
 
+### Lessons learned
+- From product owner/originator perspective, the engagement with technical demands clarified aspects of the problem, specifically the available data
+- In-person meeting at project outset very valuable (Found a reasonable remote workflow, but geographic dispersion still a challenge)
+- Aim for a single suite? (application overload: adobe connect, skype business, trello, draw.io, github)
+  - could github work to centralize? using issues/wikis etc functionality (non-developers not have to worry about file mgmt)
