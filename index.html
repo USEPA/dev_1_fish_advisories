@@ -11,13 +11,23 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCguF1xzSn-RKRhPM9DI-HH6Kjt9NxUhwM"></script>
 
 <script> 
-function initMap(){
-	var uluru= {lat: 38.91, lng: -77};
+function initMap(position){
+	location="#page2";
+	
+	myLat=position.coords.latitude;
+	myLong=position.coords.longitude;
+	
+	var uluru= {lat: myLat, lng: myLong};
 	var map = new google.maps.Map(document.getElementById('map'), {
 	  zoom: 13,
 	  center: uluru
 	});
 	
+	var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
 	
 	var marker = new google.maps.Marker({
 	  position: uluru,
@@ -25,10 +35,8 @@ function initMap(){
 	});
 	
 	var contentString="<ul>\
-	<li>One Fish</li>\
-	<li>Two Fish</li>\
-	<li>Red Fish</li>\
-	<li>Blue fish</li>\
+	<li>Limit Lake Trout (Mackinaw) to 1&nbsp;<a href=\"http://www.doh.wa.gov/CommunityandEnvironment/Food/Fish/MealSize\" tabindex=\"0\" title=\"Fish meal size chart.\">meal</a> per week. </li>\
+	<li>Women who are or might become pregnant, nursing mothers, and young children should also follow the <a href=\"http://www.doh.wa.gov/CommunityandEnvironment/Food/Fish/MercuryAdvisories\" tabindex=\"0\" title=\"Mercury advisories for certain fish.\">Statewide Mercury Advisory</a>. </li>\
 	</ul>";
 	
 	
@@ -39,37 +47,52 @@ function initMap(){
 	marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
+} 
 
 
-	
-}    
+function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }   
     
-	
-
-
 function getLocation() {
 	zzz = document.getElementById("demo");
 	
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(initMap);
+		
+		
+		
+		
+		
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 
 function showPosition(position) {
+	myLat=position.coords.latitude ;
+	myLong=position.coords.longitude;
+	
     zzz.innerHTML = "Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude;
 }	
 	
-	
-    
 jQuery(document).ready(function(){
 	
 	jQuery("#radio1_0").click(function(){
-		location="#page2";
-		
-		initMap();
+		jQuery('#map').empty();
+		getLocation();
 	});
 	
 	
@@ -78,6 +101,21 @@ jQuery(document).ready(function(){
 </script>
 
 <style>
+
+	h1{ 
+	
+	text-align:center;
+	font-size:48px !important;
+	color: white;
+	padding-bottom:8em;}
+
+	#page{
+		background-image:url(fish.jpg);
+		background-size:contain;
+		
+	}
+
+
        #map {
         height: 400px;
         width: 100%;
@@ -88,10 +126,10 @@ jQuery(document).ready(function(){
 </head> 
 <body> 
 <div data-role="page" id="page">
-	<div data-role="header">
-		<h1>Fish Advisories Where I Am</h1>
-	</div>
+	
 	<div data-role="content">
+    <div data-role="fieldcontain"><h1>Eat Me If You Can</h1></div>
+    
         
         <div data-role="fieldcontain">
           <fieldset data-role="controlgroup">
@@ -99,25 +137,19 @@ jQuery(document).ready(function(){
           <input type="radio" name="radio1" id="radio1_0" value="" />
             <label for="radio1_0">Use My Location</label>
             <input type="radio" name="radio1" id="radio1_1" value="" />
-            <label for="radio1_1">Choose Other Location (Geocoding Service) </label>
+            <label for="radio1_1">Choose Waterbody</label>
            
           </fieldset>
         </div>
         <div align="center" data-role="fieldcontain">
-    
           <input type="text" name="textinput" id="textinput" value=""  />
-          <a href="#page2" data-role="button">Enter</a>
-          
+          <a href="#page2" data-role="button">Go!</a>
         </div>
 
         	
 	</div>
     
-    <p>Click the button to get your coordinates.</p>
-
-<button onclick="getLocation()">Try It</button>
-
-<p id="demo">test</p>
+   
 
 <script>
 
@@ -127,12 +159,13 @@ jQuery(document).ready(function(){
 
 
 <div data-role="page" id="page2">
-	Map with Fish
-    Google Maps infowindow
+	<div data-role="header"><h1>Fish Advisories</h1></div>
+    
     
     <div id="map"></div>
+    <a href="#page" data-role="button">Go Back</a>
     
-
+    
 
 </div>
 
