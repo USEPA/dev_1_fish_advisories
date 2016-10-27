@@ -22,7 +22,7 @@ A simple smartphone app that allows user to view advisories relative to her/his 
 ![Launch](https://github.com/USEPA/dev_1_fish_advisories/blob/master/Mockup_Resources/Fish%20Near%20Me%20-%20Landing.png)
 
 ![Launch](https://github.com/USEPA/dev_1_fish_advisories/blob/master/Mockup_Resources/Screen_Sub%20Fish%20Near%20Me%20-%20PinPoint%20Interaction.png)![Launch](https://github.com/USEPA/dev_1_fish_advisories/blob/master/Mockup_Resources/Screen_Sub%20Fish%20Near%20Me%20-%20Advice%20Interaction.png)
-* Refine prototype
+* Refine prototype (demo clone and launch)
 
 ### Major Next steps
 - Define backend functionality: advisory producers (e.g., state departments of health) vary in data management/access
