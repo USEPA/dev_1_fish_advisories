@@ -14,8 +14,11 @@
 function initMap(position){
 	location="#page2";
 	
-	myLat=position.coords.latitude;
-	myLong=position.coords.longitude;
+	/*myLat=position.coords.latitude;
+	myLong=position.coords.longitude;*/
+	
+	myLat=48.019919;
+	myLong=-120.32;
 	
 	var uluru= {lat: myLat, lng: myLong};
 	var map = new google.maps.Map(document.getElementById('map'), {
@@ -31,7 +34,6 @@ function initMap(position){
 	
 	
 	/*var geocoder = new google.maps.Geocoder();
-
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
     });*/
@@ -52,8 +54,6 @@ function initMap(position){
           infowindow.open(map, marker);
         });
 } 
-
-
 function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('address').value;
         geocoder.geocode({'address': address}, function(results, status) {
@@ -70,6 +70,8 @@ function geocodeAddress(geocoder, resultsMap) {
       }   
     
 function getLocation() {
+	initMap();
+	return;
 	zzz = document.getElementById("demo");
 	
     if (navigator.geolocation) {
@@ -83,7 +85,6 @@ function getLocation() {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
-
 function showPosition(position) {
 	myLat=position.coords.latitude ;
 	myLong=position.coords.longitude;
@@ -95,7 +96,7 @@ function showPosition(position) {
 jQuery(document).ready(function(){
 	
 	jQuery("#radio1_0").click(function(){
-		jQuery('#map').empty();
+		
 		getLocation();
 	});
 	
@@ -105,21 +106,17 @@ jQuery(document).ready(function(){
 </script>
 
 <style>
-
 	h1{ 
 	
 	text-align:center;
 	font-size:48px !important;
 	color: white;
 	padding-bottom:8em;}
-
 	#page{
 		background-image:url(fish.jpg);
 		background-size:contain;
 		
 	}
-
-
        #map {
         height: 400px;
         width: 100%;
@@ -156,7 +153,6 @@ jQuery(document).ready(function(){
    
 
 <script>
-
 </script>
 	
 </div>
